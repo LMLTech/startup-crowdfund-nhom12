@@ -58,13 +58,15 @@ public class AdminController {
         User user = userRepository.findById(id).orElseThrow(() -> new RuntimeException("Không tìm thấy user"));
         User admin = getCurrentAdmin();
         if (user.getEmail().equals(admin.getEmail())) {
-            return ResponseEntity.badRequest().body(ApiResponse.error("Bạn không thể tự khóa tài khoản của chính mình"));
+            return ResponseEntity.badRequest()
+                    .body(ApiResponse.error("Bạn không thể tự khóa tài khoản của chính mình"));
         }
         try {
-            User.UserStatus newStatus = User.UserStatus.valueOf(request.getStatus().toUpperCase());
+            User.UserStatus newStatus = User.UserStatus.valueOf(request.getStatus().toString().toUpperCase());
             user.setStatus(newStatus);
             userRepository.save(user);
-            activityLogService.log(admin, "UPDATE_USER_STATUS", "USER", id, "Unknown IP", "Changed status to " + newStatus);
+            activityLogService.log(admin, "UPDATE_USER_STATUS", "USER", id, "Unknown IP",
+                    "Changed status to " + newStatus);
             return ResponseEntity.ok(ApiResponse.success(null, "Cập nhật trạng thái thành công"));
         } catch (IllegalArgumentException e) {
             return ResponseEntity.badRequest().body(ApiResponse.error("Trạng thái không hợp lệ"));
@@ -93,9 +95,8 @@ public class AdminController {
             @RequestParam(required = false) Long userId) {
 
         return ResponseEntity.ok(ApiResponse.success(
-            transactionService.getTransactions(page, limit, status, type, userId),
-            "Lấy danh sách giao dịch thành công"
-        ));
+                transactionService.getTransactions(page, limit, status, type, userId),
+                "Lấy danh sách giao dịch thành công"));
     }
 
     // ==================== PROJECTS (ADMIN) ====================
@@ -108,8 +109,7 @@ public class AdminController {
         var projects = projectRepository.findAll(pageable);
 
         return ResponseEntity.ok(ApiResponse.success(
-            projects.getContent(),
-            "Lấy danh sách tất cả dự án thành công"
-        ));
+                projects.getContent(),
+                "Lấy danh sách tất cả dự án thành công"));
     }
 }
