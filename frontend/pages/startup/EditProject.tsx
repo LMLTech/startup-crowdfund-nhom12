@@ -91,8 +91,8 @@ export default function EditProject({ project, currentUser, onNavigate, onLogout
     <div className="min-h-screen">
       <Navbar currentUser={currentUser} onNavigate={onNavigate} onLogout={onLogout} />
 
-      <div className="pt-24 pb-20 px-4">
-        <div className="w-3/4 mx-auto px-10 max-w-6xl"> {/* Layout File 2 */}
+      <div className="pt-4 pb-20 px-10 mb-4">
+        <div className="w-3/4 mx-auto px-10 max-w-6xl pt-4"> {/* Layout File 2 */}
           
           {/* Back Button */}
           <Button
@@ -100,14 +100,14 @@ export default function EditProject({ project, currentUser, onNavigate, onLogout
             onClick={() => onNavigate('my-projects')}
             className="mb-6 text-white hover:bg-white/10"
           >
-            <ArrowLeft className="w-4 h-4 mr-2" />
+            <ArrowLeft className="w-4 h-4 mr-2 " />
             Quay lại danh sách dự án
           </Button>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 ">
             {/* Main Content */}
             <div className="lg:col-span-2 space-y-6">
-              <div className="bg-white/10 backdrop-blur-xl rounded-2xl p-8 border border-white/20">
+              <div className="bg-white/10 backdrop-blur-xl rounded-xl p-8 pt-4 border border-white/20">
                 
                 {/* Header: Badge & Title */}
                 <div className="flex items-center gap-3 mb-6">
@@ -174,8 +174,8 @@ export default function EditProject({ project, currentUser, onNavigate, onLogout
             </div>
 
             {/* Sidebar Stats */}
-            <div className="space-y-6">
-              <div className="bg-white/10 backdrop-blur-xl rounded-2xl p-6 border border-white/20">
+            <div className="space-y-6 mb-4">
+              <div className="bg-white/10 backdrop-blur-xl rounded-xl p-8 border border-white/20">
                 <h3 className="text-xl text-white mb-4">Thống kê</h3>
                 
                 <div className="space-y-4">

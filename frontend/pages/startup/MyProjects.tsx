@@ -96,18 +96,18 @@ export default function MyProjects({ currentUser, onNavigate, onLogout }: MyProj
     <div className="min-h-screen">
       <Navbar currentUser={currentUser} onNavigate={onNavigate} onLogout={onLogout} />
 
-      <div className="pt-24 pb-20 px-10 mb-4 mt-4">
+      <div className="pt-4 pb-20 px-10 mb-4 mt-4">
         <div className="w-3/4 px-10 mx-auto max-w-7xl">
           
           {/* Back Button (Giữ lại từ File 1 nhưng đặt trong layout File 2) */}
-          <Button
+          {/* <Button
             variant="ghost"
             onClick={() => onNavigate('startup-dashboard')}
             className="mb-6 text-white hover:bg-white/10"
           >
             <ArrowLeft className="w-4 h-4 mr-2" />
             Quay lại Dashboard
-          </Button>
+          </Button> */}
 
           {/* Header */}
           <div className="flex items-center gap-4 mb-8">

@@ -76,12 +76,12 @@ export default function ProjectManagement({ currentUser, onNavigate, onLogout }:
     <div className="min-h-screen">
       <Navbar currentUser={currentUser} onNavigate={onNavigate} onLogout={onLogout} />
 
-      <div className="pt-24 pb-20 px-10">
+      <div className="pt-4 pb-20 px-10 mb-4">
         <div className="container mx-auto max-w-7xl">
           
           {/* Header Section - Style File 2 (Centered) */}
           <div className="text-center mb-8">
-            <h1 className="text-xl text-white mb-2 font-semibold flex justify-center items-center gap-2">
+            <h1 className="text-xl text-white mb-2 font-semibold flex justify-center items-center gap-2 mt-4">
               Quản lý dự án
               {IS_MOCK_MODE && <span className="text-[10px] bg-yellow-500 text-black px-1.5 py-0.5 rounded font-bold">MOCK</span>}
             </h1>

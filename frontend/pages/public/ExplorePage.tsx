@@ -89,8 +89,8 @@ export default function ExplorePage({ currentUser, onNavigate, onLogout }: Explo
           </p>
 
           {/* Stats */}
-          <div className="px-10">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto mb-8 px-4">
+          <div className="w-3/4 mx-auto px-10">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto mb-8 ">
               <div className="bg-white/10 backdrop-blur-xl rounded-xl p-6 border border-gray-700/30">
                 <div className="flex items-center justify-center gap-2 mb-2">
                   <TrendingUp className="w-6 h-6 text-emerald-400" />

@@ -74,7 +74,7 @@ export default function ReviewProjects({ currentUser, onNavigate, onLogout }: Re
       <Navbar currentUser={currentUser} onNavigate={onNavigate} onLogout={onLogout} />
 
       <div className="pt-4 pb-20 px-10 mb-4">
-        <div className="w-3/4 px-10 mx-auto max-w-7xl">
+        <div className="w-3/4 px-10 mx-auto max-w-7xl mt-4">
           
           {/* Back Button (Commented out theo File 2 style, nhưng giữ logic) */}
           {/* <Button

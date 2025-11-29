@@ -98,14 +98,14 @@ export default function TransactionManagement({ currentUser, onNavigate, onLogou
     <div className="min-h-screen">
       <Navbar currentUser={currentUser} onNavigate={onNavigate} onLogout={onLogout} />
 
-      <div className="pt-24 pb-20 px-10">
+      <div className="pt-4 pb-20 px-10">
         <div className="container mx-auto max-w-7xl">
           
           {/* Header Section - Style File 2 */}
           <div className="w-3/4 mx-auto flex items-center justify-between mb-4">
             <div>
               <div className="flex items-center gap-2">
-                <h1 className="text-xl text-white mb-2 font-semibold">
+                <h1 className="text-xl text-white mb-2 font-semibold mt-4">
                   Quản lý giao dịch
                 </h1>
                 {IS_MOCK_MODE && <span className="text-[10px] bg-yellow-500 text-black px-1.5 py-0.5 rounded font-bold">MOCK</span>}

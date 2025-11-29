@@ -121,11 +121,11 @@ export default function InvestmentHistory({ currentUser, onNavigate, onLogout }:
     <div className="min-h-screen">
       <Navbar currentUser={currentUser} onNavigate={onNavigate} onLogout={onLogout} />
 
-      <div className="pt-24 pb-20 px-4 mb-4">
+      <div className="pt-4 pb-20 px-4 mb-4">
         <div className="w-3/4 px-10 mx-auto max-w-7xl">
           
           {/* Header Section */}
-          <div className="mb-8">
+          <div className="mb-8 mt-4">
             <div className="flex items-center justify-between">
               <div>
                 <h1 className="text-xl text-white mb-2 font-semibold">

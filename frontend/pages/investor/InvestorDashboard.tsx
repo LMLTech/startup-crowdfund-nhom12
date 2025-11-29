@@ -116,7 +116,7 @@ export default function InvestorDashboard({ currentUser, onNavigate, onLogout }:
     <div className="min-h-screen">
       <Navbar currentUser={currentUser} onNavigate={onNavigate} onLogout={onLogout} />
 
-      <div className="pt-24 pb-20 px-4 mb-4">
+      <div className="pt-4 pb-20 px-4 mb-4 mt-4">
         <div className="w-3/4 px-10 mx-auto max-w-7xl">
           
           {/* Welcome Section */}

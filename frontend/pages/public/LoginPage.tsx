@@ -82,7 +82,7 @@ export default function LoginPage({ onLogin, onNavigate }: LoginPageProps) {
         {/* Login Form Container - Style File 2 */}
         <div className="bg-white/10 backdrop-blur-xl rounded-xl p-8 border border-white/20 mt-4">
           <div className="text-center mb-8">
-            <h2 className="text-xl text-white mb-2 font-semibold">Đăng nhập</h2>
+            <h2 className="text-3xl text-white mb-2 font-bold">Đăng nhập</h2>
             <p className="text-white/70 font-semibold">
               Chào mừng bạn quay trở lại!
             </p>
@@ -140,7 +140,7 @@ export default function LoginPage({ onLogin, onNavigate }: LoginPageProps) {
 
           {/* Quick Login for Demo - UI File 2 nhưng gọi hàm logic File 1 */}
           <div className="mt-6 pt-6 border-t border-white/20">
-            <p className="text-white/70 text-sm text-center mb-3 font-semibold mt-2 mb-2">
+            <p className="text-white/70 text-sm text-center font-semibold mt-2 mb-2">
               Demo - Đăng nhập nhanh:
             </p>
             <div className="grid grid-cols-2 gap-2">
@@ -181,7 +181,7 @@ export default function LoginPage({ onLogin, onNavigate }: LoginPageProps) {
               Chưa có tài khoản?{' '}
               <button
                 onClick={() => onNavigate('register')}
-                className="text-green-400 hover:text-green-300 underline font-medium"
+                className="text-green-400 hover:text-green-300 underline font-bold"
               >
                 Đăng ký ngay
               </button>

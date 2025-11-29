@@ -136,10 +136,10 @@ export default function AdminDashboard({ currentUser, onNavigate, onLogout }: Ad
       <Navbar currentUser={currentUser} onNavigate={onNavigate} onLogout={onLogout} />
 
       {/* Header Section */}
-      <div className="text-center pt-24 pb-20 px-10 mb-4">
+      <div className="text-center pt-4 pb-20 px-10 mb-4">
         <div className="container mx-auto max-w-7xl">
           <div className="mb-12">
-            <h1 className="text-xl text-white mb-2 font-semibold flex items-center justify-center gap-2">
+            <h1 className="text-xl text-white mb-2 font-semibold flex items-center justify-center gap-2 mt-4">
               Admin Dashboard 👨‍💼
               {IS_MOCK_MODE && (
                 <span className="text-xs bg-yellow-500 text-black px-2 py-1 rounded font-bold">MOCK</span>

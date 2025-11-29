@@ -101,9 +101,9 @@ export default function RegisterPage({ onRegister, onNavigate }: RegisterPagePro
         {/* Register Form Container */}
         <div className="bg-white/10 backdrop-blur-xl rounded-xl p-8 mt-4 border border-white/20">
           <div className="text-center mb-8">
-            <h2 className="text-3xl text-white mb-2">Đăng ký tài khoản</h2>
+            <h2 className="text-3xl text-white mb-2 font-bold">Đăng ký tài khoản</h2>
             <p className="text-white/70">
-              Tham gia cộng đồng StarFund ngay hôm nay
+              Tham gia cộng đồng TreFund ngay hôm nay
             </p>
           </div>
 

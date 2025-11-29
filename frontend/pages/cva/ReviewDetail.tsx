@@ -100,7 +100,7 @@ export default function ReviewDetail({ project, currentUser, onNavigate, onLogou
     <div className="min-h-screen">
       <Navbar currentUser={currentUser} onNavigate={onNavigate} onLogout={onLogout} />
 
-      <div className="pt-24 pb-20 px-4">
+      <div className="pt-4 w-3/4 mx-auto pb-20 px-4">
         <div className="container mx-auto max-w-6xl">
           <Button
             variant="ghost"
@@ -113,14 +113,14 @@ export default function ReviewDetail({ project, currentUser, onNavigate, onLogou
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             <div className="lg:col-span-2 space-y-6">
-              <div className="bg-white/10 backdrop-blur-xl rounded-2xl p-8 border border-white/20">
+              <div className="bg-white/10 backdrop-blur-xl rounded-xl p-8 border border-white/20">
                 <div className="flex items-center gap-3 mb-6">
                   <Badge className="bg-yellow-500/90">Chờ duyệt</Badge>
                   <h1 className="text-3xl text-white">{project.title}</h1>
                   {IS_MOCK_MODE && <span className="text-xs bg-yellow-500 text-black px-2 py-1 rounded font-bold">MOCK</span>}
                 </div>
 
-                <div className="aspect-video rounded-xl overflow-hidden mb-6">
+                <div className="aspect-video rounded-xl overflow-hidden mb-4 mt-4">
                   {/* Xử lý ảnh */}
                   {project.image || project.imageUrl ? (
                       <img 
@@ -137,18 +137,18 @@ export default function ReviewDetail({ project, currentUser, onNavigate, onLogou
 
                 <div className="space-y-6">
                   <div>
-                    <h3 className="text-white text-xl mb-2">Mô tả ngắn</h3>
+                    <h3 className="text-white text-lg mb-2 font-semibold">Mô tả ngắn</h3>
                     <p className="text-white/80">{project.description}</p>
                   </div>
 
                   <div>
-                    <h3 className="text-white text-xl mb-2">Mô tả chi tiết</h3>
+                    <h3 className="text-white text-lg font-semibold mb-2 mt-4">Mô tả chi tiết</h3>
                     <p className="text-white/80">{project.fullDescription}</p>
                   </div>
 
                   <div>
-                    <h3 className="text-white text-xl mb-3">Tags</h3>
-                    <div className="flex flex-wrap gap-2">
+                    <h3 className="text-white text-lg mb-2 mt-4 font-semibold">Tags</h3>
+                    <div className="flex flex-wrap gap-2 mb-4">
                       {(project.tags || []).map((tag: any, index: number) => ( // Thêm type any cho tag
                         <Badge key={index} variant="outline" className="border-white/20 text-white">
                           {typeof tag === 'string' ? tag : tag.tagName}
@@ -158,9 +158,9 @@ export default function ReviewDetail({ project, currentUser, onNavigate, onLogou
                   </div>
 
                   <div>
-                    <h3 className="text-white text-xl mb-3">Thông tin Startup</h3>
+                    <h3 className="text-white text-lg mb-2 font-semibold">Thông tin Startup</h3>
                     <div className="p-4 bg-white/5 rounded-lg">
-                      <p className="text-white">Tên: {project.startupName || project.founder?.company || 'N/A'}</p>
+                      <p className="text-white ">Tên: {project.startupName || project.founder?.company || 'N/A'}</p>
                       <p className="text-white/70">Người đại diện: {project.founderName || project.founder?.name}</p>
                       <p className="text-white/70">Email: {project.founderEmail || project.founder?.email}</p>
                     </div>
@@ -168,8 +168,8 @@ export default function ReviewDetail({ project, currentUser, onNavigate, onLogou
                 </div>
               </div>
 
-              <div className="bg-white/10 backdrop-blur-xl rounded-2xl p-8 border border-white/20">
-                <h3 className="text-white text-xl mb-4">Phản hồi / Lý do từ chối (nếu có)</h3>
+              <div className="bg-white/10 backdrop-blur-xl rounded-xl p-8 border border-white/20 mt-4">
+                <h3 className="text-white text-xl font-semibold mb-4">Phản hồi / Lý do từ chối (nếu có)</h3>
                 <Label htmlFor="feedback" className="text-white/70 mb-2 block">
                   Nhập phản hồi cho Startup
                 </Label>
@@ -185,8 +185,8 @@ export default function ReviewDetail({ project, currentUser, onNavigate, onLogou
             </div>
 
             <div className="space-y-6">
-              <div className="bg-white/10 backdrop-blur-xl rounded-2xl p-6 border border-white/20">
-                <h3 className="text-xl text-white mb-4">Thông tin dự án</h3>
+              <div className="bg-white/10 backdrop-blur-xl rounded-xl p-8 border border-white/20">
+                <h3 className="text-xl text-white mb-4 font-semibold">Thông tin dự án</h3>
                 
                 <div className="space-y-4">
                   <div>
@@ -213,7 +213,7 @@ export default function ReviewDetail({ project, currentUser, onNavigate, onLogou
                 </div>
               </div>
 
-              <div className="bg-white/10 backdrop-blur-xl rounded-2xl p-6 border border-white/20">
+              <div className="bg-white/10 backdrop-blur-xl rounded-xl p-8 border border-white/20 mt-4">
                 <h3 className="text-xl text-white mb-4">Hành động</h3>
                 
                 <div className="space-y-3">
@@ -238,8 +238,8 @@ export default function ReviewDetail({ project, currentUser, onNavigate, onLogou
                 </div>
               </div>
 
-              <div className="bg-yellow-500/10 border border-yellow-500/30 rounded-2xl p-4">
-                <p className="text-yellow-400 text-sm">
+              <div className="bg-yellow-500/10 border border-yellow-500/30 rounded-xl p-4 mt-4 mb-4">
+                <p className="text-white text-sm">
                   💡 Lưu ý: Hãy thẩm định kỹ trước khi phê duyệt. Dự án đã duyệt sẽ hiển thị công khai cho nhà đầu tư.
                 </p>
               </div>

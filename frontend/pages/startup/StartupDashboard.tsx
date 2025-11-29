@@ -124,12 +124,12 @@ export default function StartupDashboard({ currentUser, onNavigate, onLogout }: 
     <div className="min-h-screen">
       <Navbar currentUser={currentUser} onNavigate={onNavigate} onLogout={onLogout} />
 
-      <div className="pt-24 pb-20 px-10 mb-4">
-        <div className="w-3/4 px-10 mx-auto max-w-7xl">
+      <div className="pt-4 pb-20 px-10 mb-4 ">
+        <div className="w-3/4 px-10 mx-auto max-w-7xl mb-4">
           
           {/* Welcome Section */}
           <div className="mb-12">
-            <h1 className="text-xl font-semibold text-white mb-2">
+            <h1 className="text-xl font-semibold text-white mb-2 mt-4">
               Xin chào, {currentUser?.name || 'Startup'}! 🚀
               {IS_MOCK_MODE && <span className="ml-4 text-xs bg-yellow-500 text-black px-2 py-1 rounded font-bold">MOCK</span>}
             </h1>

@@ -148,7 +148,7 @@ export default function CreateProject({ currentUser, onNavigate, onLogout }: Cre
     <div className="min-h-screen">
       <Navbar currentUser={currentUser} onNavigate={onNavigate} onLogout={onLogout} />
 
-      <div className="pt-24 pb-20 px-10 mb-4">
+      <div className="pt-4 pb-20 px-10 mb-4 ">
         <div className="w-3/4 mx-auto px-10 max-w-4xl">
           
           {/* Back Button */}
@@ -259,7 +259,7 @@ export default function CreateProject({ currentUser, onNavigate, onLogout }: Cre
                 </div>
 
                 <div>
-                  <Label htmlFor="daysLeft" className="text-white mb-2 block">
+                  <Label htmlFor="daysLeft" className="text-white mb-2 block ">
                     Thời gian gọi vốn (ngày) *
                   </Label>
                   <Input
@@ -271,7 +271,7 @@ export default function CreateProject({ currentUser, onNavigate, onLogout }: Cre
                     required
                     min="30"
                     max="180"
-                    className="bg-white/10 border-white/20 text-white"
+                    className="bg-white/10 border-white/20 text-white mb-4"
                   />
                 </div>
               </div>

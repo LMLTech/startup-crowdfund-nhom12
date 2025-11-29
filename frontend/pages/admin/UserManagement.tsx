@@ -112,14 +112,14 @@ export default function UserManagement({ currentUser, onNavigate, onLogout }: Us
     <div className="min-h-screen">
       <Navbar currentUser={currentUser} onNavigate={onNavigate} onLogout={onLogout} />
 
-      <div className="pt-24 pb-20 px-10">
+      <div className="pt-4 pb-20 px-10">
         <div className="container mx-auto max-w-7xl">
           
           {/* Header Section - Style File 2 */}
           <div className="flex items-center justify-center mb-8">
             <div>
               <div className="flex items-center gap-2 justify-center mb-2">
-                <h1 className="text-xl text-white font-semibold">
+                <h1 className="text-xl text-white font-semibold mt-4">
                   Quản lý người dùng
                 </h1>
                 {IS_MOCK_MODE && <span className="text-[10px] bg-yellow-500 text-black px-1.5 py-0.5 rounded font-bold">MOCK</span>}

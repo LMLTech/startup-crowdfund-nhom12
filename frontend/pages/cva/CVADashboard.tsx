@@ -167,7 +167,7 @@ export default function CVADashboard({ currentUser, onNavigate, onLogout }: CVAD
 
           {/* Guidelines Section */}
           <div className="bg-white/10 backdrop-blur-xl rounded-xl p-8 border border-white/20 mt-4">
-            <h2 className="text-2xl text-white mb-6 font-semibold">
+            <h2 className="text-2xl text-white mb-6 font-semibold mb-4">
               Hướng dẫn thẩm định
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

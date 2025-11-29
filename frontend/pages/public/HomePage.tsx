@@ -110,7 +110,7 @@ export default function HomePage({ currentUser, onNavigate, onLogout }: HomePage
             {!currentUser ? (
               <Button
                 onClick={() => onNavigate("login")}
-                className="bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-500 hover:to-emerald-500 text-white mt-4 h-12 px-8 text-lg rounded-full shadow-lg hover:shadow-green-500/20 transition-all px-4"
+                className="bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-500 hover:to-emerald-500 text-white mt-4 h-12 px-8 text-lg rounded-full shadow-lg hover:shadow-green-500/20 transition-all px-4 "
               >
                 Bắt đầu với chúng tôi
               </Button>

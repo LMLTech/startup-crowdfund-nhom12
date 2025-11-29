@@ -15,7 +15,7 @@ export default function Navbar({ currentUser, onNavigate, onLogout }: NavbarProp
   const getNavItems = () => {
     if (!currentUser) {
       return [
-        { label: 'Trang chủ', icon: Home, page: 'home' },
+        // { label: 'Trang chủ', icon: Home, page: 'home' },
         { label: 'Khám phá', icon: Compass, page: 'explore' },
         { label: 'Giới thiệu', icon: Info, page: 'about' },
         { label: 'Blog', icon: BookOpen, page: 'blog' },

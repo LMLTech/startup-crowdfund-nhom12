@@ -1,62 +1,83 @@
-HELP.md
+########################################
+# 🌟 BACKEND — JAVA SPRING BOOT
+########################################
+
+# Maven build
 target/
-.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
 
-### STS ###
+# Maven wrapper
+.mvn/wrapper/*
+!.mvn/wrapper/maven-wrapper.jar
+mvnw.cmd
+mvnw
+
+# Spring / Eclipse / IDE trash
 .apt_generated
 .classpath
 .factorypath
 .project
-.settings
+.settings/
 .springBeans
 .sts4-cache
 
-### IntelliJ IDEA ###
-.idea
+# IntelliJ IDEA
+.idea/
 *.iws
 *.iml
 *.ipr
 
-### NetBeans ###
+# NetBeans
 /nbproject/private/
 /nbbuild/
 /dist/
 /nbdist/
 /.nb-gradle/
-build/
+/build/
 !**/src/main/**/build/
 !**/src/test/**/build/
 
-### VS Code ###
+# VS Code
 .vscode/
 
-# =========================
-# Node / React / Vite Frontend
-# =========================
+########################################
+# 🌟 FRONTEND — REACT + TYPESCRIPT
+########################################
+
 frontend/node_modules/
 frontend/dist/
 frontend/build/
 frontend/.vite/
 frontend/.cache/
 frontend/coverage/
-frontend/.env
-frontend/.env.local
-frontend/.env.development
-frontend/.env.production
+frontend/.env*
 frontend/npm-debug.log*
 frontend/yarn-debug.log*
 frontend/yarn-error.log*
 
-# =========================
-# ⚡ OS / Misc
-# =========================
+########################################
+# 🌟 SYSTEM / OS / MISC
+########################################
 .DS_Store
 Thumbs.db
 *.log
 *.tmp
 *.bak
 *.old
+*.swp
+*.pid
 
-.fake
+########################################
+# 🌟 DOCKER
+########################################
+**/.dockerignore
+**/Dockerfile~
+
+########################################
+# 🌟 SECURITY
+########################################
+*.pem
+*.key
+*.crt
+secrets/
