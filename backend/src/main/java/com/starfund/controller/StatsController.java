@@ -89,7 +89,7 @@ public class StatsController {
     }
 
     // Admin dashboard — only ADMIN
-    @GetMapping("/admin-dashboard")
+    @GetMapping("/admin-dashboards")
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<?> getAdminStats() {
         Map<String, Object> data = new HashMap<>();
