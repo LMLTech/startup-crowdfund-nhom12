@@ -1,3 +1,27 @@
+package com.starfund.controller;
+
+import java.time.LocalDateTime;
+import java.util.HashMap;
+import java.util.Map;
+
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.starfund.dto.ApiResponse;
+import com.starfund.model.Project.ProjectStatus;
+import com.starfund.model.User;
+import com.starfund.repository.InvestmentRepository;
+import com.starfund.repository.ProjectRepository;
+import com.starfund.repository.ProjectReviewRepository;
+import com.starfund.repository.TransactionRepository;
+import com.starfund.repository.UserRepository;
+
+import lombok.RequiredArgsConstructor;
+
 @RestController
 @RequestMapping("/api/stats")
 @RequiredArgsConstructor
@@ -37,7 +61,7 @@ public class StatsController {
         User user = getCurrentUser();
         Map<String, Object> data = new HashMap<>();
 
-        Long totalProjects = projectRepository.countByFounderAndStatus(user, Project.ProjectStatus.APPROVED);
+        Long totalProjects = projectRepository.countByFounderAndStatus(user, ProjectStatus.APPROVED);
         Long totalRaised = projectRepository.sumRaisedByFounder(user); // <-- new repo method
 
         data.put("totalProjects", totalProjects != null ? totalProjects : 0L);
@@ -53,7 +77,7 @@ public class StatsController {
         Map<String, Object> data = new HashMap<>();
         LocalDateTime startOfMonth = LocalDateTime.now().withDayOfMonth(1).withHour(0).withMinute(0).withSecond(0);
 
-        Long pending = projectRepository.countByStatus(Project.ProjectStatus.PENDING);
+        Long pending = projectRepository.countByStatus(ProjectStatus.PENDING);
         Long approvedThisMonth = projectReviewRepository.countApprovedSince(startOfMonth);
         Long rejectedThisMonth = projectReviewRepository.countRejectedSince(startOfMonth);
 
@@ -72,7 +96,8 @@ public class StatsController {
 
         Long totalUsers = userRepository.count();
         Long totalProjects = projectRepository.count();
-        Long totalInvestments = transactionRepository.sumSuccessfulInvestmentAmount(); // ensure repo method returns Long
+        Long totalInvestments = transactionRepository.sumSuccessfulInvestmentAmount(); // ensure repo method returns
+                                                                                       // Long
 
         data.put("totalUsers", totalUsers != null ? totalUsers : 0L);
         data.put("totalProjects", totalProjects != null ? totalProjects : 0L);

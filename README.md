@@ -25,3 +25,4 @@ Mở terminal cd tại thư mục `frontend` và chạy lệnh:
 
 ### ▶️ 3. Chạy dự án
      --> npm run dev
+
