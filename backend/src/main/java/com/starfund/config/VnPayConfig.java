@@ -9,13 +9,16 @@ import java.nio.charset.StandardCharsets;
 
 @Configuration
 public class VnPayConfig {
+
     public static String vnp_PayUrl = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
-    // Dùng đúng link Ngrok của bạn
     public static String vnp_ReturnUrl = "https://dave-nonorthographic-ladyishly.ngrok-free.dev/api/investments/vnpay-callback";
-    public static String vnp_TmnCode = "2QXUI4J4"; // Đảm bảo đúng mã Sandbox của bạn
-    public static String vnp_HashSecret = "RAOEXHYFYPOIJDOQRIQYMOABEPJQVJWX"; // Đảm bảo đúng Secret Key
+
+    public static String vnp_TmnCode = "2QXUI4J4";
+    public static String vnp_HashSecret = "RAOEXHYFYPOIJDOQRIQYMOABEPJQVJWX";
+
     public static String vnp_ApiUrl = "https://sandbox.vnpayment.vn/merchant_webapi/api/transaction";
 
+   
     public static String hmacSHA512(final String key, final String data) {
         try {
             if (key == null || data == null) return "";
@@ -43,6 +46,6 @@ public class VnPayConfig {
         if ("0:0:0:0:0:0:0:1".equals(ip)) {
             ip = "127.0.0.1";
         }
-        return ip;
+        return ip;  
     }
 }

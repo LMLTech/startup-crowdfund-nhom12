@@ -152,17 +152,17 @@ export default function CreateProject({ currentUser, onNavigate, onLogout }: Cre
         <div className="w-3/4 mx-auto px-10 max-w-4xl">
           
           {/* Back Button */}
-          <Button
+          {/* <Button
             variant="ghost"
             onClick={() => onNavigate('startup-dashboard')}
             className="mb-6 text-white hover:bg-white/10"
           >
             <ArrowLeft className="w-4 h-4 mr-2" />
             Quay lại Dashboard
-          </Button>
+          </Button> */}
 
           {/* Main Form Container */}
-          <div className="bg-white/10 backdrop-blur-xl rounded-xl p-8 border border-white/20 px-10">
+          <div className="bg-white/10 backdrop-blur-xl rounded-xl p-8 border border-white/20 mt-4 px-10">
             <div className="flex items-center gap-4 mb-2">
                 <h1 className="text-xl text-white font-semibold">Tạo dự án mới</h1>
                 {IS_MOCK_MODE && <span className="text-xs bg-yellow-500 text-black px-2 py-1 rounded font-bold">MOCK MODE</span>}

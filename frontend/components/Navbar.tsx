@@ -29,14 +29,14 @@ export default function Navbar({ currentUser, onNavigate, onLogout }: NavbarProp
     switch (userRole) {
       case 'investor':
         return [
-          { label: 'Trang chủ', icon: Home, page: 'home' },
+          // { label: 'Trang chủ', icon: Home, page: 'home' },
           { label: 'Khám phá', icon: Compass, page: 'explore' },
           { label: 'Dashboard', icon: BarChart3, page: 'investor-dashboard' },
           { label: 'Lịch sử đầu tư', icon: FolderOpen, page: 'investment-history' },
         ];
       case 'startup':
         return [
-          { label: 'Trang chủ', icon: Home, page: 'home' },
+          // { label: 'Trang chủ', icon: Home, page: 'home' },
           { label: 'Dashboard', icon: BarChart3, page: 'startup-dashboard' },
           { label: 'Dự án của tôi', icon: FolderOpen, page: 'my-projects' },
           { label: 'Tạo dự án', icon: Rocket, page: 'create-project' },
@@ -54,7 +54,7 @@ export default function Navbar({ currentUser, onNavigate, onLogout }: NavbarProp
           { label: 'Quản lý giao dịch', icon: Settings, page: 'transaction-management' },
         ];
       default:
-        return [{ label: 'Trang chủ', icon: Home, page: 'home' }];
+        return [];
     }
   };
 
