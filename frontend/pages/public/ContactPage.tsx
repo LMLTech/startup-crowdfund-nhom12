@@ -285,7 +285,7 @@ export default function ContactPage({ currentUser, onNavigate, onLogout }) {
               </p>
               <a
                 href="tel:1900xxxx"
-                className="text-emerald-400 hover:text-emerald-300 text-xl"
+                className=" hover:text-emerald-300 text-xl  text-white "
               >
                 1900-xxxx
               </a>
@@ -302,7 +302,7 @@ export default function ContactPage({ currentUser, onNavigate, onLogout }) {
               </p>
               <a
                 href="mailto:media@trefund.vn"
-                className="text-emerald-400 hover:text-emerald-300"
+                className=" hover:text-emerald-300 text-white"
               >
                 media@trefund.vn
               </a>
