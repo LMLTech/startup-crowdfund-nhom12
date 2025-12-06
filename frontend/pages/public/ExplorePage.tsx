@@ -1,17 +1,30 @@
-import React, { useState, useEffect } from 'react';
-import { Search, TrendingUp, Users, Clock, Filter, SlidersHorizontal } from 'lucide-react';
-import Navbar from '../../components/Navbar';
-import Footer from '../../components/Footer';
-import ProjectCard from '../../components/ProjectCard';
-import { Input } from '../../components/ui/input';
-import { Button } from '../../components/ui/button';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../../components/ui/select';
-import { Badge } from '../../components/ui/badge';
-import { Slider } from '../../components/ui/slider';
+import React, { useState, useEffect } from "react";
+import {
+  Search,
+  TrendingUp,
+  Users,
+  Clock,
+  Filter,
+  SlidersHorizontal,
+} from "lucide-react";
+import Navbar from "../../components/Navbar";
+import Footer from "../../components/Footer";
+import ProjectCard from "../../components/ProjectCard";
+import { Input } from "../../components/ui/input";
+import { Button } from "../../components/ui/button";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "../../components/ui/select";
+import { Badge } from "../../components/ui/badge";
+import { Slider } from "../../components/ui/slider";
 
 // Import Hook & Helpers (Logic từ File 1)
-import { useProjects } from '../../hooks/useProjects';
-import { formatCurrency } from '../../utils/mockData';
+import { useProjects } from "../../hooks/useProjects";
+import { formatCurrency } from "../../utils/mockData";
 
 interface ExplorePageProps {
   currentUser: any;
@@ -19,17 +32,22 @@ interface ExplorePageProps {
   onLogout: () => void;
 }
 
-export default function ExplorePage({ currentUser, onNavigate, onLogout }: ExplorePageProps) {
+export default function ExplorePage({
+  currentUser,
+  onNavigate,
+  onLogout,
+}: ExplorePageProps) {
   // --- PHẦN LOGIC (GIỮ NGUYÊN TỪ FILE 1) ---
-  const { projects, loading, fetchApprovedProjects, isMockMode } = useProjects();
-  
-  const [searchTerm, setSearchTerm] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState('all');
-  const [sortBy, setSortBy] = useState('trending');
+  const { projects, loading, fetchApprovedProjects, isMockMode } =
+    useProjects();
+
+  const [searchTerm, setSearchTerm] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("all");
+  const [sortBy, setSortBy] = useState("trending");
   const [showFilters, setShowFilters] = useState(false);
-  
+
   // FIX: Giới hạn lọc giá 100 Tỷ để khớp với dữ liệu thật
-  const [priceRange, setPriceRange] = useState([0, 100000000000]); 
+  const [priceRange, setPriceRange] = useState([0, 100000000000]);
   const [minProgress, setMinProgress] = useState(0);
 
   // Fetch data
@@ -39,49 +57,77 @@ export default function ExplorePage({ currentUser, onNavigate, onLogout }: Explo
   }, []);
 
   // Get unique categories
-  const categories = ['all', ...new Set(projects.map(p => p.category).filter(Boolean))];
+  const categories = [
+    "all",
+    ...new Set(projects.map((p) => p.category).filter(Boolean)),
+  ];
 
   // Filter and sort
   const filteredProjects = projects
-    .filter(project => {
-      const matchesSearch = project.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                            (project.description && project.description.toLowerCase().includes(searchTerm.toLowerCase()));
-      const matchesCategory = selectedCategory === 'all' || project.category === selectedCategory;
-      
+    .filter((project) => {
+      const matchesSearch =
+        project.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        (project.description &&
+          project.description.toLowerCase().includes(searchTerm.toLowerCase()));
+      const matchesCategory =
+        selectedCategory === "all" || project.category === selectedCategory;
+
       const target = project.targetAmount || 0;
       const matchesPrice = target >= priceRange[0] && target <= priceRange[1];
-      
+
       const current = project.currentAmount || 0;
       const progress = target > 0 ? (current / target) * 100 : 0;
       const matchesProgress = progress >= minProgress;
-      
-      return matchesSearch && matchesCategory && matchesPrice && matchesProgress;
+
+      return (
+        matchesSearch && matchesCategory && matchesPrice && matchesProgress
+      );
     })
     .sort((a, b) => {
-      if (sortBy === 'trending') return (b.investorCount || 0) - (a.investorCount || 0);
-      if (sortBy === 'newest') return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
-      if (sortBy === 'ending-soon') return (a.daysLeft || 0) - (b.daysLeft || 0);
-      if (sortBy === 'most-funded') return (b.currentAmount || 0) - (a.currentAmount || 0);
+      if (sortBy === "trending")
+        return (b.investorCount || 0) - (a.investorCount || 0);
+      if (sortBy === "newest")
+        return (
+          new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+        );
+      if (sortBy === "ending-soon")
+        return (a.daysLeft || 0) - (b.daysLeft || 0);
+      if (sortBy === "most-funded")
+        return (b.currentAmount || 0) - (a.currentAmount || 0);
       return 0;
     });
 
   // Calculate statistics
   const totalProjects = projects.length;
-  const totalFunded = projects.reduce((sum, p) => sum + (p.currentAmount || 0), 0);
-  const totalInvestors = projects.reduce((sum, p) => sum + (p.investorCount || 0), 0);
+  const totalFunded = projects.reduce(
+    (sum, p) => sum + (p.currentAmount || 0),
+    0
+  );
+  const totalInvestors = projects.reduce(
+    (sum, p) => sum + (p.investorCount || 0),
+    0
+  );
 
   // --- PHẦN GIAO DIỆN (UI TỪ FILE 2 - Đã sửa padding) ---
   return (
     <div className="min-h-screen flex flex-col">
-      <Navbar currentUser={currentUser} onNavigate={onNavigate} onLogout={onLogout} />
+      <Navbar
+        currentUser={currentUser}
+        onNavigate={onNavigate}
+        onLogout={onLogout}
+      />
 
       {/* Hero Section */}
       {/* SỬA LỖI: Dùng pt-24 để không bị Navbar che mất nội dung */}
-      <div className="pt-24 pb-12 px-4 mt-4"> 
+      <div className="pt-4 pb-12 px-4 mt-4">
         <div className="container mx-auto text-center">
-          {isMockMode && <span className="bg-yellow-500 text-black px-2 py-1 rounded text-xs font-bold mb-4 inline-block">MOCK MODE</span>}
-          
-          <h1 className="text-xl md:text-6xl text-white mb-4 bg-gradient-to-r from-emerald-300 via-emerald-400 to-emerald-600 bg-clip-text text-transparent font-semibold animate-pulse">
+          {isMockMode && (
+            <span className="bg-yellow-500 text-black px-2 py-1 rounded text-xs font-bold mb-4 inline-block">
+              MOCK MODE
+            </span>
+          )}
+
+          <h1 className="text-xl md:text-6xl text-white mb-4 bg-gradient-to-r from-emerald-300 via-emerald-400 to-emerald-600 bg-clip-text text-transparent font-semibold animate-pulse ">
             Khám Phá Dự Án
           </h1>
           <p className="text-lg md:text-xl text-white/80 mb-8 max-w-3xl mx-auto">
@@ -94,14 +140,18 @@ export default function ExplorePage({ currentUser, onNavigate, onLogout }: Explo
               <div className="bg-white/10 backdrop-blur-xl rounded-xl p-6 border border-gray-700/30">
                 <div className="flex items-center justify-center gap-2 mb-2">
                   <TrendingUp className="w-6 h-6 text-emerald-400" />
-                  <span className="text-3xl text-white">{loading ? '...' : totalProjects}</span>
+                  <span className="text-3xl text-white">
+                    {loading ? "..." : totalProjects}
+                  </span>
                 </div>
                 <p className="text-white/70">Dự án đang gọi vốn</p>
               </div>
               <div className="bg-white/10 backdrop-blur-xl rounded-xl p-6 border border-gray-700/30">
                 <div className="flex items-center justify-center gap-2 mb-2">
                   <Users className="w-6 h-6 text-emerald-400" />
-                  <span className="text-3xl text-white">{loading ? '...' : `${totalInvestors}+`}</span>
+                  <span className="text-3xl text-white">
+                    {loading ? "..." : `${totalInvestors}+`}
+                  </span>
                 </div>
                 <p className="text-white/70">Nhà đầu tư</p>
               </div>
@@ -109,7 +159,9 @@ export default function ExplorePage({ currentUser, onNavigate, onLogout }: Explo
                 <div className="flex items-center justify-center gap-2 mb-2">
                   <Clock className="w-6 h-6 text-blue-400" />
                   <span className="text-3xl text-white">
-                    {loading ? '...' : formatCurrency(totalFunded).replace('₫', '')}
+                    {loading
+                      ? "..."
+                      : formatCurrency(totalFunded).replace("₫", "")}
                   </span>
                 </div>
                 <p className="text-white/70">Tổng vốn huy động</p>
@@ -136,14 +188,21 @@ export default function ExplorePage({ currentUser, onNavigate, onLogout }: Explo
                 />
               </div>
               <div className="md:col-span-3">
-                <Select value={selectedCategory} onValueChange={setSelectedCategory}>
+                <Select
+                  value={selectedCategory}
+                  onValueChange={setSelectedCategory}
+                >
                   <SelectTrigger className="bg-white/10 border-white/20 text-white">
                     <SelectValue placeholder="Danh mục" />
                   </SelectTrigger>
                   <SelectContent className="bg-black/90 backdrop-blur-xl border-white/20 text-white">
-                    {categories.map(cat => (
-                      <SelectItem key={cat} value={cat} className="focus:bg-white/10">
-                        {cat === 'all' ? 'Tất cả danh mục' : cat}
+                    {categories.map((cat) => (
+                      <SelectItem
+                        key={cat}
+                        value={cat}
+                        className="focus:bg-white/10"
+                      >
+                        {cat === "all" ? "Tất cả danh mục" : cat}
                       </SelectItem>
                     ))}
                   </SelectContent>
@@ -155,10 +214,24 @@ export default function ExplorePage({ currentUser, onNavigate, onLogout }: Explo
                     <SelectValue placeholder="Sắp xếp" />
                   </SelectTrigger>
                   <SelectContent className="bg-black/90 backdrop-blur-xl border-white/20 text-white">
-                    <SelectItem value="trending" className="focus:bg-white/10">Phổ biến nhất</SelectItem>
-                    <SelectItem value="newest" className="focus:bg-white/10">Mới nhất</SelectItem>
-                    <SelectItem value="ending-soon" className="focus:bg-white/10">Sắp kết thúc</SelectItem>
-                    <SelectItem value="most-funded" className="focus:bg-white/10">Vốn cao nhất</SelectItem>
+                    <SelectItem value="trending" className="focus:bg-white/10">
+                      Phổ biến nhất
+                    </SelectItem>
+                    <SelectItem value="newest" className="focus:bg-white/10">
+                      Mới nhất
+                    </SelectItem>
+                    <SelectItem
+                      value="ending-soon"
+                      className="focus:bg-white/10"
+                    >
+                      Sắp kết thúc
+                    </SelectItem>
+                    <SelectItem
+                      value="most-funded"
+                      className="focus:bg-white/10"
+                    >
+                      Vốn cao nhất
+                    </SelectItem>
                   </SelectContent>
                 </Select>
               </div>
@@ -166,7 +239,11 @@ export default function ExplorePage({ currentUser, onNavigate, onLogout }: Explo
                 <Button
                   onClick={() => setShowFilters(!showFilters)}
                   variant="outline"
-                  className={`w-full border-white/20 text-white ${showFilters ? 'bg-emerald-600 border-emerald-500' : 'bg-white/10 hover:bg-white/20'}`}
+                  className={`w-full border-white/20 text-white ${
+                    showFilters
+                      ? "bg-emerald-600 border-emerald-500"
+                      : "bg-white/10 hover:bg-white/20"
+                  }`}
                 >
                   <SlidersHorizontal className="w-4 h-4" />
                 </Button>
@@ -178,7 +255,8 @@ export default function ExplorePage({ currentUser, onNavigate, onLogout }: Explo
               <div className="pt-4 border-t border-white/20 space-y-6 animate-in slide-in-from-top-2">
                 <div>
                   <label className="text-white text-sm mb-3 block">
-                    Vốn mục tiêu: {formatCurrency(priceRange[0])} - {formatCurrency(priceRange[1])}
+                    Vốn mục tiêu: {formatCurrency(priceRange[0])} -{" "}
+                    {formatCurrency(priceRange[1])}
                   </label>
                   <Slider
                     min={0}
@@ -203,12 +281,12 @@ export default function ExplorePage({ currentUser, onNavigate, onLogout }: Explo
                   />
                 </div>
                 <div className="flex justify-end">
-                   <Button
+                  <Button
                     onClick={() => {
-                      setPriceRange([0, 100000000000]); 
+                      setPriceRange([0, 100000000000]);
                       setMinProgress(0);
-                      setSelectedCategory('all');
-                      setSearchTerm('');
+                      setSelectedCategory("all");
+                      setSearchTerm("");
                     }}
                     variant="outline"
                     className="border-white/20 bg-white/10 hover:bg-white/20 text-white"
@@ -221,9 +299,9 @@ export default function ExplorePage({ currentUser, onNavigate, onLogout }: Explo
           </div>
 
           {/* Active Filters Tags */}
-          {(selectedCategory !== 'all' || searchTerm || minProgress > 0) && (
+          {(selectedCategory !== "all" || searchTerm || minProgress > 0) && (
             <div className="flex flex-wrap gap-2 mt-4">
-              {selectedCategory !== 'all' && (
+              {selectedCategory !== "all" && (
                 <Badge className="bg-emerald-600 text-white border-0">
                   {selectedCategory}
                 </Badge>
@@ -235,7 +313,7 @@ export default function ExplorePage({ currentUser, onNavigate, onLogout }: Explo
               )}
               {minProgress > 0 && (
                 <Badge className="bg-blue-500/90 text-white border-0">
-                  Tiến độ {'>='} {minProgress}%
+                  Tiến độ {">="} {minProgress}%
                 </Badge>
               )}
             </div>
@@ -251,22 +329,28 @@ export default function ExplorePage({ currentUser, onNavigate, onLogout }: Explo
               Hiển thị {filteredProjects.length} dự án
             </p>
           </div>
-          
+
           {loading ? (
-             <div className="text-center text-white py-20 animate-pulse">Đang tải dữ liệu...</div>
+            <div className="text-center text-white py-20 animate-pulse">
+              Đang tải dữ liệu...
+            </div>
           ) : filteredProjects.length === 0 ? (
             <div className="text-center py-20">
               <Filter className="w-16 h-16 text-white/30 mx-auto mb-4" />
-              <p className="text-white/70 text-xl">Không tìm thấy dự án phù hợp</p>
-              <p className="text-white/50 mt-2">Thử điều chỉnh bộ lọc của bạn</p>
+              <p className="text-white/70 text-xl">
+                Không tìm thấy dự án phù hợp
+              </p>
+              <p className="text-white/50 mt-2">
+                Thử điều chỉnh bộ lọc của bạn
+              </p>
             </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {filteredProjects.map(project => (
+              {filteredProjects.map((project) => (
                 <ProjectCard
                   key={project.id}
                   project={project}
-                  onClick={() => onNavigate('project-detail', project)}
+                  onClick={() => onNavigate("project-detail", project)}
                 />
               ))}
             </div>
